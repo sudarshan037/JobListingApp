@@ -36,7 +36,7 @@ public class UserController {
 	@Autowired
 	private SecurityTokenGenerator tokenGen;
 	
-	private final String UPLOAD_DIRECTORY = "/home/sudarshan.choudhary/Downloads/";
+	private final String UPLOAD_DIRECTORY = "/home/sdrsn037/Documents/FrontEnd/JobListingApp/Data/";
 	
 	
 	@PostMapping("/register")
@@ -79,8 +79,9 @@ public class UserController {
 			}
 
 			// Save Image at Server
-			String serverImageStorageUrl = UPLOAD_DIRECTORY + File.separator + userName + "." + file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[1];
-
+//			+ File.separator
+			String serverImageStorageUrl = UPLOAD_DIRECTORY  + userName + "." + file.getOriginalFilename().split("\\.(?=[^\\.]+$)")[1];
+			System.out.println(serverImageStorageUrl);
 			Files.copy(file.getInputStream(), Paths.get(serverImageStorageUrl), StandardCopyOption.REPLACE_EXISTING);
 
 		} catch (Exception e) {
@@ -102,7 +103,7 @@ public class UserController {
 //	      headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
 //	      headers.add("Pragma", "no-cache");
 //	      headers.add("Expires", "0");
-	      
+	      System.out.println(headers);
 	      ResponseEntity<Object> 
 	      responseEntity = ResponseEntity.ok().headers(headers).contentLength(
 	         file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);

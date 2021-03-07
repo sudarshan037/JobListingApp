@@ -77,5 +77,16 @@ public class JobController {
 			}			
 			return new ResponseEntity<> (HttpStatus.BAD_REQUEST); // 400 Bad Input
 		}
+		
+		@ApiOperation(value="Check if Favorite Jobs User pair exists", notes="This api is responsible for verfing if favorite job user pair exists or not")
+		@CrossOrigin(origins = "http://localhost:4200")
+		@PostMapping("/pair/exists")
+		public ResponseEntity<Boolean> isFavoriteJobUserPairsExists(@RequestBody Job job) {
+			// TestCase 1 : check if job id already exits
+			if(jobService.isJobUserPairExists(job)) {
+				return ResponseEntity.ok(true); // 200 All Okay
+			}			
+			return ResponseEntity.ok(false); // 404 Bad Input
+		}
 
 }

@@ -18,7 +18,8 @@ public class SecurityTokenGenerator {
 		Map<String,String> map = new HashMap();
 		map.put("token", jwtToken);
 		map.put("message", "Welcome! Successfully logged in");
-		map.put("name", user.getFirstName());
+		map.put("Fname", user.getFirstName());
+		map.put("Lname", user.getLastName());
 		map.put("userId", user.getUserId());
 		
 		return map;
